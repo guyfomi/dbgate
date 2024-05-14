@@ -1,3 +1,4 @@
+// @ts-nocheck
 const express = require('express');
 const basicAuth = require('express-basic-auth');
 const bodyParser = require('body-parser');

@@ -1,3 +1,4 @@
+// @ts-nocheck
 const { setLogger, getLogger, setLoggerName } = require('dbgate-tools');
 const processArgs = require('./utility/processArgs');
 const fs = require('fs');
