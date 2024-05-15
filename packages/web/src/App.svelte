@@ -93,5 +93,5 @@
     />
   {/if}
 {:else}
-  <AppStartInfo message="Starting DbGate" />
+  <AppStartInfo message="Starting ..." />
 {/if}
