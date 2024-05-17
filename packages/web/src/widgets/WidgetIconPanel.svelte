@@ -110,7 +110,7 @@
 
   <div class="flex1">&nbsp;</div>
 
-  <div
+  <!-- <div
     class="wrapper"
     title={`Toggle whether tabs from all databases are visible. Currently - ${$lockedDatabaseMode ? 'NO' : 'YES'}`}
     on:click={() => {
@@ -118,7 +118,7 @@
     }}
   >
     <FontIcon icon={$lockedDatabaseMode ? 'icon locked-database-mode' : 'icon unlocked-database-mode'} />
-  </div>
+  </div> -->
   <div class="wrapper" on:click={handleSettingsMenu} bind:this={domSettings}>
     <FontIcon icon="icon settings" />
   </div>
