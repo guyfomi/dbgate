@@ -92,17 +92,17 @@ module.exports = ({ editMenu }) => [
       { command: 'folder.showData', hideDisabled: true },
     ],
   },
-  {
-    label: 'Help',
-    submenu: [
-      { command: 'app.openDocs', hideDisabled: true },
-      { command: 'app.openWeb', hideDisabled: true },
-      { command: 'app.openIssue', hideDisabled: true },
-      { command: 'app.openSponsoring', hideDisabled: true },
-      { divider: true },
-      { command: 'settings.commands', hideDisabled: true },
-      { command: 'tabs.changelog', hideDisabled: true },
-      { command: 'about.show', hideDisabled: true },
-    ],
-  },
+  // {
+  //   label: 'Help',
+  //   submenu: [
+  //     { command: 'app.openDocs', hideDisabled: true },
+  //     { command: 'app.openWeb', hideDisabled: true },
+  //     { command: 'app.openIssue', hideDisabled: true },
+  //     { command: 'app.openSponsoring', hideDisabled: true },
+  //     { divider: true },
+  //     { command: 'settings.commands', hideDisabled: true },
+  //     { command: 'tabs.changelog', hideDisabled: true },
+  //     { command: 'about.show', hideDisabled: true },
+  //   ],
+  // },
 ];
