@@ -46,13 +46,13 @@
       $values = {
         ...$values,
         user: connection.user,
-        server: connection.server,
+        server: connection.displayName,
       };
     }
     if (passwordMode == 'askUser') {
       $values = {
         ...$values,
-        server: connection.server,
+        server: connection.displayName,
       };
     }
 

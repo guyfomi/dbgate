@@ -14,7 +14,7 @@ const pipeForkLogs = require('../utility/pipeForkLogs');
 const { getLogger } = require('dbgate-tools');
 
 const logger = getLogger('serverConnection');
-
+ 
 module.exports = {
   opened: [],
   closed: {},
