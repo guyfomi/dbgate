@@ -11,6 +11,9 @@
 
 <DatabaseWidget hidden={$visibleSelectedWidget != 'database'} />
 
+{#if $visibleSelectedWidget == 'dashboard'}
+  <FilesWidget />
+{/if}
 {#if $visibleSelectedWidget == 'file'}
   <FilesWidget />
 {/if}
