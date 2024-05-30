@@ -19,7 +19,8 @@
   {#each items as item}
   <tr><td>{item.process}</td><td>{item.state}</td><td>{item.lag}</td></tr>    
   {/each}
-</table>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
+
+</table>
