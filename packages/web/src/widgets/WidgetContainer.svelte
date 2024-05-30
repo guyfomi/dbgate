@@ -7,12 +7,13 @@
   import CellDataWidget from './CellDataWidget.svelte';
   import HistoryWidget from './HistoryWidget.svelte';
   import AppWidget from './AppWidget.svelte';
+  import OggWidget from './OggWidget.svelte';
 </script>
 
 <DatabaseWidget hidden={$visibleSelectedWidget != 'database'} />
 
 {#if $visibleSelectedWidget == 'dashboard'}
-  <FilesWidget />
+  <OggWidget />
 {/if}
 {#if $visibleSelectedWidget == 'file'}
   <FilesWidget />
