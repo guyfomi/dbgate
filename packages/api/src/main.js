@@ -69,7 +69,7 @@ function start() {
     app.use(getExpressPath('/'), express.static(path.join(__dirname, '../../web/public')));
   } else {
     app.get(getExpressPath('/'), (req, res) => {
-      res.send('DbGate API');
+      res.send('Warehouse API');
     });
   }
 
@@ -113,7 +113,7 @@ function start() {
 
   if (platformInfo.isDocker) {
     const port = process.env.PORT || 3000;
-    logger.info(`DbGate API listening on port ${port} (docker build)`);
+    logger.info(`Warehouse API listening on port ${port} (docker build)`);
     server.listen(port);
   } else if (platformInfo.isNpmDist) {
     getPort({
@@ -123,21 +123,21 @@ function start() {
       ),
     }).then(port => {
       server.listen(port, () => {
-        logger.info(`DbGate API listening on port ${port} (NPM build)`);
+        logger.info(`Warehouse API listening on port ${port} (NPM build)`);
       });
     });
   } else if (process.env.DEVWEB) {
     const port = process.env.PORT || 3000;
-    logger.info(`DbGate API & web listening on port ${port} (dev web build)`);
+    logger.info(`Warehouse API & web listening on port ${port} (dev web build)`);
     server.listen(port);
   } else {
     const port = process.env.PORT || 3000;
-    logger.info(`DbGate API listening on port ${port} (dev API build)`);
+    logger.info(`Warehouse API listening on port ${port} (dev API build)`);
     server.listen(port);
   }
 
   function shutdown() {
-    logger.info('\nShutting down DbGate API server');
+    logger.info('\nShutting down Warehouse API server');
     server.close(() => {
       logger.info('Server shut down, terminating');
       process.exit(0);
