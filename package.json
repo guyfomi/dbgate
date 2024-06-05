@@ -65,6 +65,7 @@
   "devDependencies": {
     "copyfiles": "^2.2.0",
     "prettier": "^2.2.1",
+    "svelte-headless-table": "^0.18.2",
     "workspaces-run": "^1.0.1"
   }
 }
