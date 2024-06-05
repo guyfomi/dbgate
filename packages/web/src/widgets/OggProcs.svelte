@@ -18,7 +18,7 @@
 </script>
 
 <table>
-  <tr><th>Processus</th><th>Status</th><th>Latence</th></tr>
+  <tr><th>Processus</th><th>Status</th><th>Latence</th><th></th></tr>
 
   {#await promise}
     <p>loading</p>
