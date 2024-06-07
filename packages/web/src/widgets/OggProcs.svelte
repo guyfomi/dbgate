@@ -31,7 +31,7 @@
     {#each items as item}
       <tr
         ><td>{item.process}</td><td>{item.state}</td><td>{item.lag}</td><td
-          ><button on:click={handleClick} type="button">{item.action}</button></td
+          ><button id={item.id_button} on:click={handleClick} type="button">{item.action}</button></td
         ></tr
       >
     {/each}
