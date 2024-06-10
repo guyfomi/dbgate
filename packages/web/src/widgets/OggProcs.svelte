@@ -136,7 +136,7 @@
     {#each procs as process}
       <tr
         ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
-          ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
+          ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
           ></td
         ></tr
       >
