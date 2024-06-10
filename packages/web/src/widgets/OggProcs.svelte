@@ -1,11 +1,11 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import LoadingInfo from '../elements/LoadingInfo.svelte';
-  import { writable, readable } from 'svelte/store';
+  //import { setContext, getContext } from 'svelte'
 
   const dispatch = createEventDispatcher();
   let msg = 'Chargement Etat Processus';
-  let procs = [{"process":"Capture","state":"loading ...","action":"loading ...","id_button":"btn_loading_capture","lag":"loading ..."},{"process":"Propagation","state":"loading ...","action":"loading ...","id_button":"btn_loading_propagation","lag":"loading ..."},{"process":"Replication","state":"loading ...","action":"loading ...","id_button":"btn_loading_replication","lag":"loading ...."}];
+  let procs = [{"process":"Capture","state":"...","action":"...","id_button":"btn_loading_capture","lag":"..."},{"process":"Propagation","state":"...","action":"...","id_button":"btn_loading_propagation","lag":"..."},{"process":"Replication","state":"...","action":"...","id_button":"btn_loading_replication","lag":"..."}];
 
   function handleClick(process) {
     // var element = <HTMLInputElement>document.getElementById(btn.target.id);
@@ -48,6 +48,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -59,6 +60,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -70,6 +72,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -81,6 +84,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -92,6 +96,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -103,6 +108,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -114,6 +120,7 @@
     const data = await res.json();
 
     if (res.ok) {
+      procs=data;
       return data;
     } else {
       throw new Error();
@@ -125,7 +132,7 @@
   <tr><th>Processus</th><th>Status</th><th>Latence</th><th></th></tr>
 
   {#await promise}
-    <!-- <LoadingInfo message={msg} /> -->
+    <!-- <LoadingInfo message={msg} /> -->       
     {#each procs as process}
       <tr
         ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
