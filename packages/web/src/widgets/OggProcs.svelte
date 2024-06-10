@@ -123,7 +123,7 @@
   <tr><th>Processus</th><th>Status</th><th>Latence</th><th></th></tr>
 
   {#await promise}
-    <LoadingInfo message="message" />
+    <LoadingInfo message=message />
   {:then processes}
     {#each processes as process}
       <tr
