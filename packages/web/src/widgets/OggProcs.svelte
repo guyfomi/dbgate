@@ -1,9 +1,11 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import LoadingInfo from '../elements/LoadingInfo.svelte';
+  import { writable, readable } from 'svelte/store';
 
   const dispatch = createEventDispatcher();
-  let message = 'Chargement Etat Processus';
+  let msg = 'Chargement Etat Processus';
+  let procs = [{"process":"Capture","state":"loading ...","action":"loading ...","id_button":"btn_loading_capture","lag":"loading ..."},{"process":"Propagation","state":"loading ...","action":"loading ...","id_button":"btn_loading_propagation","lag":"loading ..."},{"process":"Replication","state":"loading ...","action":"loading ...","id_button":"btn_loading_replication","lag":"loading ...."}];
 
   function handleClick(process) {
     // var element = <HTMLInputElement>document.getElementById(btn.target.id);
@@ -11,27 +13,27 @@
     console.debug(process);
     switch (process.id_button) {
       case 'btn_stop_capture':
-        message = 'Arret processus Capture';
+        msg = 'Arret processus Capture';
         promise = stopCapture();
         break;
       case 'btn_stop_propagation':
-        message = 'Arret processus Propagation';
+        msg = 'Arret processus Propagation';
         promise = stopPropagation();
         break;
       case 'btn_stop_replication':
-        message = 'Arret processus Replication';
+        msg = 'Arret processus Replication';
         promise = stopReplicat();
         break;
       case 'btn_start_capture':
-        message = 'Demarrage processus Capture';
+        msg = 'Demarrage processus Capture';
         promise = startCapture();
         break;
       case 'btn_start_propagation':
-        message = 'Demarrage processus Propagation';
+        msg = 'Demarrage processus Propagation';
         promise = startPropagation();
         break;
       case 'btn_start_replication':
-        message = 'Demarrage processus Replication';
+        msg = 'Demarrage processus Replication';
         promise = startReplicat();
         break;
       default:
@@ -123,7 +125,15 @@
   <tr><th>Processus</th><th>Status</th><th>Latence</th><th></th></tr>
 
   {#await promise}
-    <LoadingInfo message=message />
+    <!-- <LoadingInfo message={msg} /> -->
+    {#each procs as process}
+      <tr
+        ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
+          ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
+          ></td
+        ></tr
+      >
+    {/each}
   {:then processes}
     {#each processes as process}
       <tr
