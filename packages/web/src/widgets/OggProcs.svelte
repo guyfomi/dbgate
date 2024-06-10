@@ -3,9 +3,23 @@
 
   const dispatch = createEventDispatcher();
 
-  function handleClick(x) {
-    console.log('button clicked ...');
-    console.debug(x);
+  function handleClick(process) {
+    // var element = <HTMLInputElement>document.getElementById(btn.target.id);
+    // element.disabled = true;
+    console.debug(process);
+    // switch (btn.target.id) {
+    //   case 'btn_stop_capture':
+    //     console.log();
+    //     break;
+    //   case 'btn_stop_propagation':
+    //     // code block
+    //     break;
+    //   case 'btn_stop_replication':
+    //     // code block
+    //     break;
+    //   default:
+    //   // code block
+    // }
   }
 
   let promise = fetchData();
@@ -27,11 +41,11 @@
 
   {#await promise}
     <p>loading</p>
-  {:then items}
-    {#each items as item}
+  {:then processes}
+    {#each processes as process}
       <tr
-        ><td>{item.process}</td><td>{item.state}</td><td>{item.lag}</td><td
-          ><button id={item.id_button} on:click={handleClick} type="button">{item.action}</button></td
+        ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
+          ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button></td
         ></tr
       >
     {/each}
