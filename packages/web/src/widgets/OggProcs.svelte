@@ -137,7 +137,7 @@
     console.log('onMount');
     const interval = setInterval(async () => {
       promise = fetchData();
-    }, 15000);
+    }, 10000);
 
     return () => clearInterval(interval);
   });
@@ -150,7 +150,7 @@
     <!-- <LoadingInfo message={msg} /> -->
     {#each procs as process}
       <tr
-        ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
+        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><td
           ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button"
             >{process.action}</button
           ></td
@@ -160,7 +160,7 @@
   {:then processes}
     {#each processes as process}
       <tr
-        ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
+        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><td
           ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
           ></td
         ></tr
