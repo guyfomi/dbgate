@@ -139,6 +139,7 @@
 
   onMount(async () => {
     console.log('onMount .... ');
+    console.debug(promise);
     promise = fetchData();
   });
 
