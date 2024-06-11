@@ -1,11 +1,17 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import LoadingInfo from '../elements/LoadingInfo.svelte';
+  import { onMount, onDestroy } from 'svelte';
+
   //import { setContext, getContext } from 'svelte'
 
   const dispatch = createEventDispatcher();
   let msg = 'Chargement Etat Processus';
-  let procs = [{"process":"Capture","state":"...","action":"...","id_button":"btn_loading_capture","lag":"..."},{"process":"Propagation","state":"...","action":"...","id_button":"btn_loading_propagation","lag":"..."},{"process":"Replication","state":"...","action":"...","id_button":"btn_loading_replication","lag":"..."}];
+  let procs = [
+    { process: 'Capture', state: '...', action: '...', id_button: 'btn_loading_capture', lag: '...' },
+    { process: 'Propagation', state: '...', action: '...', id_button: 'btn_loading_propagation', lag: '...' },
+    { process: 'Replication', state: '...', action: '...', id_button: 'btn_loading_replication', lag: '...' },
+  ];
 
   function handleClick(process) {
     // var element = <HTMLInputElement>document.getElementById(btn.target.id);
@@ -48,7 +54,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -60,7 +66,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -72,7 +78,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -84,7 +90,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -96,7 +102,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -108,7 +114,7 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
@@ -120,23 +126,38 @@
     const data = await res.json();
 
     if (res.ok) {
-      procs=data;
+      procs = data;
       return data;
     } else {
       throw new Error();
     }
   }
+
+  const interval = setInterval(async () => {
+    fetchData();
+  }, 5000);
+
+  onMount(async () => {
+    console.log('onMount .... ');
+    promise = fetchData();
+  });
+
+  onDestroy(() => {
+    console.log('onDestroy .... ');
+    clearInterval(interval);
+  });
 </script>
 
 <table>
   <tr><th>Processus</th><th>Status</th><th>Latence</th><th></th></tr>
 
   {#await promise}
-    <!-- <LoadingInfo message={msg} /> -->       
+    <!-- <LoadingInfo message={msg} /> -->
     {#each procs as process}
       <tr
         ><td>{process.process}</td><td>{process.state}</td><td>{process.lag}</td><td
-          ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
+          ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button"
+            >{process.action}</button
           ></td
         ></tr
       >
