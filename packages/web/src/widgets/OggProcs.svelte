@@ -47,7 +47,8 @@
     }
   }
 
-  let promise = fetchData();
+  //let promise = fetchData();
+  let promise;
 
   async function fetchData() {
     const res = await fetch('http://10.100.18.17/bi_server/admin/json.php?module=goldengate&action=proc_states');
@@ -133,19 +134,15 @@
     }
   }
 
-  const interval = setInterval(async () => {
-    fetchData();
-  }, 5000);
+  onMount(() => {
+    console.log('onMount');
+    const interval = setInterval(async () => {
+      promise = fetchData();
+    }, 5000);
 
-  onMount(async () => {
-    console.log('onMount .... ');
-    console.debug(promise);
     promise = fetchData();
-  });
 
-  onDestroy(() => {
-    console.log('onDestroy .... ');
-    clearInterval(interval);
+    return () => clearInterval(interval);
   });
 </script>
 
