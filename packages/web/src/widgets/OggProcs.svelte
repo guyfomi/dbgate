@@ -137,7 +137,7 @@
     console.log('onMount');
     const interval = setInterval(async () => {
       promise = fetchData();
-    }, 10000);
+    }, 15000);
 
     return () => clearInterval(interval);
   });
@@ -150,20 +150,20 @@
     <!-- <LoadingInfo message={msg} /> -->
     {#each procs as process}
       <tr
-        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><td
+         ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><!--<td style="text-align:center"
           ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button"
             >{process.action}</button
           ></td
-        ></tr
+        > --></tr
       >
     {/each}
   {:then processes}
     {#each processes as process}
       <tr
-        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><td
+        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><!-- <td style="text-align:center"
           ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
           ></td
-        ></tr
+        >--></tr 
       >
     {/each}
   {:catch error}
