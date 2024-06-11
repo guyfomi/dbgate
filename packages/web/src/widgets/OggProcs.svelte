@@ -137,7 +137,7 @@
     console.log('onMount');
     const interval = setInterval(async () => {
       promise = fetchData();
-    }, 5000);
+    }, 15000);
 
     return () => clearInterval(interval);
   });
