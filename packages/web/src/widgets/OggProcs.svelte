@@ -47,8 +47,7 @@
     }
   }
 
-  //let promise = fetchData();
-  let promise;
+  let promise = fetchData();
 
   async function fetchData() {
     const res = await fetch('http://10.100.18.17/bi_server/admin/json.php?module=goldengate&action=proc_states');
@@ -139,8 +138,6 @@
     const interval = setInterval(async () => {
       promise = fetchData();
     }, 5000);
-
-    promise = fetchData();
 
     return () => clearInterval(interval);
   });
