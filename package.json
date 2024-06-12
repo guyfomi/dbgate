@@ -60,7 +60,9 @@
   "dependencies": {
     "concurrently": "^5.1.0",
     "patch-package": "^6.2.1",
-    "pino-pretty": "^9.1.1"
+    "pino-pretty": "^9.1.1",
+    "svelte-chartjs": "^3.1.5",
+    "svelte-tiny-linked-charts": "^1.6.0"
   },
   "devDependencies": {
     "copyfiles": "^2.2.0",

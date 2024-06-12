@@ -5,6 +5,7 @@
   import WidgetColumnBarItem from './WidgetColumnBarItem.svelte';
   import WidgetsInnerContainer from './WidgetsInnerContainer.svelte';
   import OggProcs from './OggProcs.svelte';
+  import OggCaptureLag from './OggCaptureLag.svelte';
 
 </script>
 
@@ -14,4 +15,9 @@
       <OggProcs/>
     </WidgetsInnerContainer>
   </WidgetColumnBarItem>  
+  <WidgetColumnBarItem title="Latence Capture" name="captureLag" storageName='captureLagChartd'>
+    <WidgetsInnerContainer>
+      <OggCaptureLag/>
+    </WidgetsInnerContainer>
+  </WidgetColumnBarItem>
 </WidgetColumnBar>

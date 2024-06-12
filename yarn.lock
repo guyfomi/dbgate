@@ -2722,7 +2722,7 @@
   "resolved" "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   "version" "0.7.0"
 
-"chart.js@^4.4.2", "chart.js@>=3.0.0", "chart.js@>=3.2.0":
+"chart.js@^3.5.0 || ^4.0.0", "chart.js@^4.4.2", "chart.js@>=3.0.0", "chart.js@>=3.2.0":
   "integrity" "sha512-6GD7iKwFpP5kbSD4MeRRRlTnQvxfQREy36uEtm1hzHzcOqwWx0YEHuspuoNlslu+nciLIB7fjjsHkUv/FzFcOg=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.4.2.tgz"
   "version" "4.4.2"
@@ -10428,6 +10428,11 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
+"svelte-chartjs@^3.1.5":
+  "integrity" "sha512-ka2zh7v5FiwfAX1oMflZ0HkNkgjHjFqANgRyC+vNYXfxtx2ku68Zo+2KgbKeBH2nS1ThDqkIACPzGxy4T0UaoA=="
+  "resolved" "https://registry.npmjs.org/svelte-chartjs/-/svelte-chartjs-3.1.5.tgz"
+  "version" "3.1.5"
+
 "svelte-check@^1.0.0":
   "integrity" "sha512-nQTlbFJWhwoeLY5rkhgbjzGQSwk5F1pRdEXait0EFaQSrE/iJF+PIjrQlk0BjL/ogk9HaR9ZI0DQSYrl7jl3IQ=="
   "resolved" "https://registry.npmjs.org/svelte-check/-/svelte-check-1.6.0.tgz"
@@ -10493,6 +10498,11 @@
   "integrity" "sha512-eKXIjLxB4C7eQWPqKEdxcGfNXm2g/qJ67zmEZK/GigCZMfrTR3m7DPY93R6MX+5uoqM1FRYxl8LZ1oy4URWi2A=="
   "resolved" "https://registry.npmjs.org/svelte-subscribe/-/svelte-subscribe-2.0.1.tgz"
   "version" "2.0.1"
+
+"svelte-tiny-linked-charts@^1.6.0":
+  "integrity" "sha512-y4ey6XkMjcMulsWpuLeC4xku/hIMoBH6/YbOJNvEISd71QOjPdXQh0Is44i23v6jI8M7HdydmaZtUCiEd37Rvg=="
+  "resolved" "https://registry.npmjs.org/svelte-tiny-linked-charts/-/svelte-tiny-linked-charts-1.6.0.tgz"
+  "version" "1.6.0"
 
 "svelte@^3.0.0", "svelte@^3.23.0", "svelte@^3.24.0", "svelte@^3.46.4":
   "integrity" "sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA=="
