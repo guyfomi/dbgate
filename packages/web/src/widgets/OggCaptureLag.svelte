@@ -17,8 +17,8 @@
     const result = await res.json();
 
     if (res.ok) {
-      labels=result.labels;
-      values=result.values;      
+      labels = result.labels;
+      values = result.values;
       return result;
     } else {
       throw new Error();
@@ -36,10 +36,10 @@
 </script>
 
 {#await promise}
-  <!-- <LinkedChart {labels} {values} type="line"/> -->
-  <LoadingInfo message={msg}/>
+  <LinkedChart {labels} {values} type="line" grow/>
+  <!-- <LoadingInfo message={msg}/> -->
 {:then}
-<LinkedChart {labels} {values} type="line"/>
+  <LinkedChart {labels} {values} type="line" grow/>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
