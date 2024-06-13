@@ -1,12 +1,12 @@
 <script lang="ts">
   //import { createEventDispatcher } from 'svelte';
 
-  //import LoadingInfo from '../elements/LoadingInfo.svelte';
+  import LoadingInfo from '../elements/LoadingInfo.svelte';
   import { LinkedChart, LinkedLabel, LinkedValue } from 'svelte-tiny-linked-charts';
   import { onMount, onDestroy } from 'svelte';
 
   //const dispatch = createEventDispatcher();
-  //let msg = 'Chargement ...';
+  let msg = 'Chargement ...';
   let labels = [];
   let values = [];
 
@@ -36,9 +36,10 @@
 </script>
 
 {#await promise}
-  <LinkedChart {labels} {values} />
+  <!-- <LinkedChart {labels} {values} type="line"/> -->
+  <LoadingInfo message={msg}/>
 {:then}
-<LinkedChart {labels} {values} />
+<LinkedChart {labels} {values} type="line"/>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
