@@ -10,12 +10,12 @@
 </script>
 
 <WidgetColumnBar>
-  <WidgetColumnBarItem title="Etat des Processus" name="processStates" storageName='processWidget'>
+  <WidgetColumnBarItem title="Etat des Processus" name="processStates" storageName='processWidget' height="25%">
     <WidgetsInnerContainer>
       <OggProcs/>
     </WidgetsInnerContainer>
   </WidgetColumnBarItem>  
-  <WidgetColumnBarItem title="Latence Capture" name="captureLag" storageName='captureLagChartd'>
+  <WidgetColumnBarItem title="Latence Capture" name="captureLag" storageName='captureLagChartd' height="25%">
     <WidgetsInnerContainer>
       <OggCaptureLag/>
     </WidgetsInnerContainer>
