@@ -36,10 +36,10 @@
 </script>
 
 {#await promise}
-  <LinkedChart {labels} {values} grow showValue valuePrepend="Latence :" valueAppend="secondes" align="center"/>
+  <LinkedChart {labels} {values} barMinHeight=5 grow showValue valuePrepend="Latence :" valueAppend="secondes" align="center"/>
   <!-- <LoadingInfo message={msg}/> -->
 {:then}
-  <LinkedChart {labels} {values} grow showValue valuePrepend="Latence :" valueAppend="secondes" align="center"/>
+  <LinkedChart {labels} {values} barMinHeight=5 grow showValue valuePrepend="Latence :" valueAppend="secondes" align="center"/>
 {:catch error}
   <p style="color: red">{error.message}</p>
 {/await}
