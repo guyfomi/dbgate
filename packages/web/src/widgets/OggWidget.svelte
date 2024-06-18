@@ -15,7 +15,7 @@
       <OggProcs/>
     </WidgetsInnerContainer>
   </WidgetColumnBarItem>  
-  <WidgetColumnBarItem title="Latence Capture" name="captureLag" storageName='captureLagChartd' height="50%">
+  <WidgetColumnBarItem title="Latence Capture" name="captureLag" storageName='captureLagChartd' height="25%">
     <WidgetsInnerContainer>
       <OggCaptureLag/>
     </WidgetsInnerContainer>
