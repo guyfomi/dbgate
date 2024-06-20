@@ -71,8 +71,9 @@
   ];
 
   function handleChangeWidget(name) {
+    console.log('handleChangeWidget ====> ' + name);
     if ($visibleSelectedWidget == name) {
-      $visibleWidgetSideBar = false;
+      //$visibleWidgetSideBar = false;
     } else {
       $selectedWidget = name;
       $visibleWidgetSideBar = true;

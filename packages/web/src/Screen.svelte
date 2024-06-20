@@ -71,9 +71,11 @@
       <WidgetContainer />
     </div>
   {/if}
-  <div class="tabs-container">
-    <MultiTabsContainer />
-  </div>
+  {#if $selectedWidget !== 'dashboard'}
+    <div class="tabs-container">
+      <MultiTabsContainer />
+    </div>
+  {/if}
   {#if $selectedWidget && $visibleWidgetSideBar}
     <div
       class="horizontal-split-handle splitter"
