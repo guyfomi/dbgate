@@ -144,7 +144,7 @@
 </script>
 
 <table>
-  <tr><th>Processus</th><th>Status</th><th>Latence</th></tr>
+  <tr><th style="text-align:left">Processus</th><th style="text-align:center">Status</th><th style="text-align:center">Latence</th></tr>
 
   {#await promise}
     <!-- <LoadingInfo message={msg} /> -->
