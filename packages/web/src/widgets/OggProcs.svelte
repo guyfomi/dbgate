@@ -2,6 +2,7 @@
   import { createEventDispatcher } from 'svelte';
   import LoadingInfo from '../elements/LoadingInfo.svelte';
   import { onMount, onDestroy } from 'svelte';
+  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
 
   //import { setContext, getContext } from 'svelte'
 
@@ -143,30 +144,51 @@
   });
 </script>
 
-<table>
+<!-- <table>
   <tr><th style="text-align:left">Processus</th><th style="text-align:center">Status</th><th style="text-align:center">Latence</th></tr>
 
-  {#await promise}
-    <!-- <LoadingInfo message={msg} /> -->
+  {#await promise}    
     {#each procs as process}
       <tr
-         ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><!--<td style="text-align:center"
-          ><button disabled id={process.id_button} on:click={() => handleClick(process)} type="button"
-            >{process.action}</button
-          ></td
-        > --></tr
+         ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td></tr
       >
     {/each}
   {:then processes}
     {#each processes as process}
       <tr
-        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td><!-- <td style="text-align:center"
-          ><button id={process.id_button} on:click={() => handleClick(process)} type="button">{process.action}</button
-          ></td
-        >--></tr 
+        ><td style="text-align:left">{process.process}</td><td style="text-align:center">{process.state}</td><td style="text-align:center">{process.lag}</td></tr 
       >
     {/each}
   {:catch error}
     <p style="color: red">{error.message}</p>
   {/await}
-</table>
+</table> -->
+
+<Table>
+  <TableHead>
+    <TableHeadCell>Processus</TableHeadCell>
+    <TableHeadCell>Status</TableHeadCell>
+    <TableHeadCell>Latence</TableHeadCell>    
+  </TableHead>
+  <TableBody tableBodyClass="divide-y">
+{#await promise}    
+    {#each procs as process}
+    <TableBodyRow>
+      <TableBodyCell>{process.process}</TableBodyCell>
+      <TableBodyCell>{process.state}</TableBodyCell>
+      <TableBodyCell>{process.lag}</TableBodyCell>      
+    </TableBodyRow>     
+    {/each}
+  {:then processes}
+    {#each processes as process}
+    <TableBodyRow>
+      <TableBodyCell>{process.process}</TableBodyCell>
+      <TableBodyCell>{process.state}</TableBodyCell>
+      <TableBodyCell>{process.lag}</TableBodyCell>      
+    </TableBodyRow>      
+    {/each}
+  {:catch error}
+    <p style="color: red">{error.message}</p>
+  {/await}
+</TableBody>
+</Table>
