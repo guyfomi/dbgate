@@ -29,7 +29,7 @@
   import getElectron from './utility/getElectron';
   import TabsContainer from './tabpanel/TabsContainer.svelte';
   import MultiTabsContainer from './tabpanel/MultiTabsContainer.svelte';
-  import OggTabs from './OggTabs.svelte';
+  import OggTabs from './widgets/OggTabs.svelte';
 
   $: currentThemeType = $currentThemeDefinition?.themeType == 'dark' ? 'theme-type-dark' : 'theme-type-light';
 

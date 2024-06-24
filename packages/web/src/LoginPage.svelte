@@ -15,7 +15,7 @@
 </script>
 
 <div class="root theme-light theme-type-light">
-  <div class="text">DbGate</div>
+  <div class="text">Third SQL</div>
   <div class="wrap">
     <div class="logo">
       <img class="img" src="logo192.png" />
