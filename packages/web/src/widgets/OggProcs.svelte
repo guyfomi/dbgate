@@ -144,7 +144,7 @@
   });
 </script>
 
-<!-- <table>
+<table>
   <tr><th style="text-align:left">Processus</th><th style="text-align:center">Status</th><th style="text-align:center">Latence</th></tr>
 
   {#await promise}    
@@ -162,33 +162,4 @@
   {:catch error}
     <p style="color: red">{error.message}</p>
   {/await}
-</table> -->
-
-<Table>
-  <TableHead>
-    <TableHeadCell>Processus</TableHeadCell>
-    <TableHeadCell>Status</TableHeadCell>
-    <TableHeadCell>Latence</TableHeadCell>    
-  </TableHead>
-  <TableBody tableBodyClass="divide-y">
-{#await promise}    
-    {#each procs as process}
-    <TableBodyRow>
-      <TableBodyCell>{process.process}</TableBodyCell>
-      <TableBodyCell>{process.state}</TableBodyCell>
-      <TableBodyCell>{process.lag}</TableBodyCell>      
-    </TableBodyRow>     
-    {/each}
-  {:then processes}
-    {#each processes as process}
-    <TableBodyRow>
-      <TableBodyCell>{process.process}</TableBodyCell>
-      <TableBodyCell>{process.state}</TableBodyCell>
-      <TableBodyCell>{process.lag}</TableBodyCell>      
-    </TableBodyRow>      
-    {/each}
-  {:catch error}
-    <p style="color: red">{error.message}</p>
-  {/await}
-</TableBody>
-</Table>
+</table>
