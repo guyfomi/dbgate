@@ -1,8 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import LoadingInfo from '../elements/LoadingInfo.svelte';
   import { onMount, onDestroy } from 'svelte';
-  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
 
   //import { setContext, getContext } from 'svelte'
 

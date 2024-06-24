@@ -29,6 +29,7 @@
   import getElectron from './utility/getElectron';
   import TabsContainer from './tabpanel/TabsContainer.svelte';
   import MultiTabsContainer from './tabpanel/MultiTabsContainer.svelte';
+  import OggTabs from './OggTabs.svelte';
 
   $: currentThemeType = $currentThemeDefinition?.themeType == 'dark' ? 'theme-type-dark' : 'theme-type-light';
 
@@ -74,6 +75,10 @@
   {#if $selectedWidget !== 'dashboard'}
     <div class="tabs-container">
       <MultiTabsContainer />
+    </div>
+    {:else}
+    <div class="tabs-container">      
+      <OggTabs/>
     </div>
   {/if}
   {#if $selectedWidget && $visibleWidgetSideBar}
