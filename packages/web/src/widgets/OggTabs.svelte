@@ -22,10 +22,11 @@
 </script>
 
 <!-- Tab links -->
+
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Capture')">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Propagation')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Replication')">Tokyo</button>
+  <button class="tablinks" on:click={() => openCity(event, "Capture")}>Capture</button>
+  <button class="tablinks" on:click={() => openCity(event, "Propagation")}>Propagation</button>
+  <button class="tablinks" on:click={() => openCity(event, "Replication")}>Replication</button>
 </div>
 
 <!-- Tab content -->
