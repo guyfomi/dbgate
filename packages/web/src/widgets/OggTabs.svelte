@@ -1,5 +1,7 @@
 <script>
-  function openCity(evt, cityName) {
+  function openTab(evt, cityName) {
+    console.log('clicked ....');
+    console.dir(evt);
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -24,9 +26,9 @@
 <!-- Tab links -->
 
 <div class="tab">
-  <button class="tablinks" on:click={() => openCity(event, "Capture")}>Capture</button>
-  <button class="tablinks" on:click={() => openCity(event, "Propagation")}>Propagation</button>
-  <button class="tablinks" on:click={() => openCity(event, "Replication")}>Replication</button>
+  <button class="tablinks" on:click={() => openTab(event, "Capture")}>Capture</button>
+  <button class="tablinks" on:click={() => openTab(event, "Propagation")}>Propagation</button>
+  <button class="tablinks" on:click={() => openTab(event, "Replication")}>Replication</button>
 </div>
 
 <!-- Tab content -->
@@ -46,23 +48,26 @@
 </div>
 
 <style>
-  /* Style the tab */
-  .tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-  }
+body {font-family: Arial;}
 
-  /* Style the buttons that are used to open the tab content */
-  .tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-  }
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
 
   /* Change background color of buttons on hover */
   .tab button:hover {
