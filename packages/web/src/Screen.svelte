@@ -30,6 +30,7 @@
   import TabsContainer from './tabpanel/TabsContainer.svelte';
   import MultiTabsContainer from './tabpanel/MultiTabsContainer.svelte';
   import OggTabs from './widgets/OggTabs.svelte';
+  import OggExceptions from './widgets/OggExceptions.svelte';
 
   $: currentThemeType = $currentThemeDefinition?.themeType == 'dark' ? 'theme-type-dark' : 'theme-type-light';
 
@@ -78,7 +79,7 @@
     </div>
     {:else}
     <div class="tabs-container">      
-      <OggTabs/>
+      <OggExceptions/>
     </div>
   {/if}
   {#if $selectedWidget && $visibleWidgetSideBar}

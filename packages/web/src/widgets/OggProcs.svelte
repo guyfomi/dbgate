@@ -132,8 +132,7 @@
     }
   }
 
-  onMount(() => {
-    console.log('onMount');
+  onMount(() => {    
     const interval = setInterval(async () => {
       promise = fetchData();
     }, 15000);
