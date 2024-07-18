@@ -73,7 +73,7 @@
       <WidgetContainer />
     </div>
   {/if}
-  {#if $selectedWidget !== 'dashboard'}
+  <!-- {#if $selectedWidget !== 'dashboard'}
     <div class="tabs-container">
       <MultiTabsContainer />
     </div>
@@ -81,7 +81,7 @@
     <div class="tabs-container">      
       <OggExceptions/>
     </div>
-  {/if}
+  {/if} -->
   {#if $selectedWidget && $visibleWidgetSideBar}
     <div
       class="horizontal-split-handle splitter"
