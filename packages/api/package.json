@@ -63,6 +63,7 @@
   "scripts": {
     "start": "env-cmd node src/index.js --listen-api",
     "start:portal": "env-cmd -f env/portal/.env node src/index.js --listen-api",
+    "start:bci": "env-cmd -f env/bci/.env node src/index.js --listen-api",
     "start:singledb": "env-cmd -f env/singledb/.env node src/index.js --listen-api",
     "start:auth": "env-cmd -f env/auth/.env node src/index.js --listen-api",
     "start:dblogin": "env-cmd -f env/dblogin/.env node src/index.js --listen-api",
