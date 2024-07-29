@@ -1,4 +1,3 @@
-// @ts-nocheck
 const express = require('express');
 const basicAuth = require('express-basic-auth');
 const bodyParser = require('body-parser');
@@ -78,6 +77,7 @@ function start() {
   }
 
   app.get(getExpressPath('/stream'), async function (req, res) {
+    const strmid = req.query.strmid;
     res.set({
       'Cache-Control': 'no-cache',
       'Content-Type': 'text/event-stream',
@@ -88,9 +88,9 @@ function start() {
 
     // Tell the client to retry every 10 seconds if connectivity is lost
     res.write('retry: 10000\n\n');
-    socket.addSseResponse(res);
+    socket.addSseResponse(res, strmid);
     onFinished(req, () => {
-      socket.removeSseResponse(res);
+      socket.removeSseResponse(strmid);
     });
   });
 

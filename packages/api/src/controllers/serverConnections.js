@@ -1,7 +1,6 @@
 const connections = require('./connections');
 const socket = require('../utility/socket');
 const { fork } = require('child_process');
-const uuidv1 = require('uuid/v1');
 const _ = require('lodash');
 const AsyncLock = require('async-lock');
 const { handleProcessCommunication } = require('../utility/processComm');
@@ -14,7 +13,7 @@ const pipeForkLogs = require('../utility/pipeForkLogs');
 const { getLogger } = require('dbgate-tools');
 
 const logger = getLogger('serverConnection');
- 
+
 module.exports = {
   opened: [],
   closed: {},
@@ -152,7 +151,7 @@ module.exports = {
   },
 
   ping_meta: true,
-  async ping({ conidArray }) {
+  async ping({ conidArray, strmid }) {
     await Promise.all(
       _.uniq(conidArray).map(async conid => {
         const last = this.lastPinged[conid];
@@ -169,6 +168,7 @@ module.exports = {
         }
       })
     );
+    socket.setStreamIdFilter(strmid, { conid: conidArray });
     return { status: 'ok' };
   },
 
@@ -200,7 +200,7 @@ module.exports = {
   },
 
   sendRequest(conn, message) {
-    const msgid = uuidv1();
+    const msgid = crypto.randomUUID();
     const promise = new Promise((resolve, reject) => {
       this.requests[msgid] = [resolve, reject];
       try {
@@ -239,5 +239,21 @@ module.exports = {
     const opened = await this.ensureOpened(conid);
     if (opened.connection.isReadOnly) return false;
     return this.loadDataCore('summaryCommand', { conid, command, row });
+  },
+
+  getOpenedConnectionReport() {
+    return this.opened.map(con => ({
+      status: con.status,
+      versionText: con.version?.versionText,
+      databaseCount: con.databases.length,
+      connection: _.pick(con.connection, [
+        'engine',
+        'useSshTunnel',
+        'authType',
+        'trustServerCertificate',
+        'useSsl',
+        'sshMode',
+      ]),
+    }));
   },
 };

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "5.2.8-beta.17",
+  "version": "5.3.2-beta.2",
   "name": "dbgate-all",
   "workspaces": [
     "packages/*",
@@ -40,6 +40,7 @@
     "build:app:local": "yarn plugins:copydist && cd app && yarn build:local",
     "start:app:local": "cd app && yarn start:local",
     "setCurrentVersion": "node setCurrentVersion",
+    "printSecrets": "node printSecrets",
     "generatePadFile": "node generatePadFile",
     "adjustPackageJson": "node adjustPackageJson",
     "fillNativeModules": "node fillNativeModules",
@@ -60,16 +61,12 @@
   },
   "dependencies": {
     "concurrently": "^5.1.0",
-    "flowbite-svelte": "^0.46.4",
     "patch-package": "^6.2.1",
-    "pino-pretty": "^9.1.1",
-    "svelte-chartjs": "^3.1.5",
-    "svelte-tiny-linked-charts": "^1.6.0"
+    "pino-pretty": "^9.1.1"
   },
   "devDependencies": {
     "copyfiles": "^2.2.0",
     "prettier": "^2.2.1",
-    "svelte-headless-table": "^0.18.2",
     "workspaces-run": "^1.0.1"
   }
 }

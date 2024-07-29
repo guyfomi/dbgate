@@ -8,7 +8,7 @@
   },
   "description": "Deploy, load or build script from model of SQL database",
   "author": "Jan Prochazka",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bin": {
     "dbmodel": "./bin/dbmodel.js"
   },
@@ -41,6 +41,6 @@
     "dbgate-plugin-oracle": "^5.0.0-alpha.1",
     "dbgate-web": "^5.0.0-alpha.1",
     "dotenv": "^16.0.0",
-    "pinomin": "^1.0.1"
+    "pinomin": "^1.0.4"
   }
 }

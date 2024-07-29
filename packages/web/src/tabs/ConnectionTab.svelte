@@ -26,7 +26,7 @@
   } from '../stores';
   import _, { Dictionary } from 'lodash';
   import { apiCall } from '../utility/api';
-  import { showSnackbarSuccess } from '../utility/snackbar';
+  import { showSnackbarError, showSnackbarSuccess } from '../utility/snackbar';
   import { changeTab } from '../utility/common';
   import getConnectionLabel from '../utility/getConnectionLabel';
   import { onMount } from 'svelte';
@@ -46,6 +46,9 @@
       engine: '',
     }
   );
+
+  // $: console.log('ConnectionTab.$values', $values);
+  // $: console.log('ConnectionTab.driver', driver);
 
   $: engine = $values.engine;
   $: driver = $extensions.drivers.find(x => x.engine == engine);
@@ -81,6 +84,7 @@
       'defaultDatabase',
       'singleDatabase',
       'socketPath',
+      'serviceName',
     ];
     const visibleProps = allProps.filter(x => driver?.showConnectionField(x, $values));
     const omitProps = _.difference(allProps, visibleProps);
@@ -161,7 +165,12 @@
 
   onMount(async () => {
     if (conid) {
-      $values = await apiCall('connections/get', { conid });
+      const con = await apiCall('connections/get', { conid });
+      if (con) {
+        $values = con;
+      } else {
+        showSnackbarError(`Connection not found: ${conid}`);
+      }
     }
   });
 

@@ -1,5 +1,5 @@
+const crypto = require('crypto');
 const _ = require('lodash');
-const uuidv1 = require('uuid/v1');
 const connections = require('./connections');
 const socket = require('../utility/socket');
 const { fork } = require('child_process');
@@ -85,7 +85,7 @@ module.exports = {
 
   create_meta: true,
   async create({ conid, database }) {
-    const sesid = uuidv1();
+    const sesid = crypto.randomUUID();
     const connection = await connections.getCore({ conid });
     const subprocess = fork(
       global['API_PACKAGE'] || process.argv[1],
@@ -149,7 +149,7 @@ module.exports = {
     const { sesid } = await this.create({ conid, database });
     const session = this.opened.find(x => x.sesid == sesid);
     session.killOnDone = true;
-    const jslid = uuidv1();
+    const jslid = crypto.randomUUID();
     session.loadingReader_jslid = jslid;
     const fileName = queryName && appFolder ? path.join(appdir(), appFolder, `${queryName}.query.sql`) : null;
 
@@ -169,7 +169,7 @@ module.exports = {
 
   startProfiler_meta: true,
   async startProfiler({ sesid }) {
-    const jslid = uuidv1();
+    const jslid = crypto.randomUUID();
     const session = this.opened.find(x => x.sesid == sesid);
     if (!session) {
       throw new Error('Invalid session');

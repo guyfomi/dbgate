@@ -17,11 +17,6 @@
 
   const widgets = [
     {
-      icon: 'icon report',
-      name: 'dashboard',
-      title: 'Dashboard',
-    },
-    {
       icon: 'icon database',
       name: 'database',
       title: 'Database connections',

@@ -33,6 +33,7 @@ const dialect = {
   dropUnique: true,
   createCheck: true,
   dropCheck: true,
+  allowMultipleValuesInsert: true,
 
   dropReferencesWhenDropTable: true,
   requireStandaloneSelectForScopeIdentity: true,
@@ -96,6 +97,19 @@ const dialect = {
             source,
           },
         ],
+      };
+    }
+
+    if (dataType?.toLowerCase() == 'uuid') {
+      return {
+        exprType: 'unaryRaw',
+        expr: {
+          exprType: 'column',
+          alias: alias || columnName,
+          source,
+          columnName,
+        },
+        afterSql: '::text',
       };
     }
   },

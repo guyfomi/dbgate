@@ -8,7 +8,7 @@
     "url": "https://github.com/dbgate/dbgate.git"
   },
   "author": "Jan Prochazka",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "keywords": [
     "sql",
     "json",
@@ -26,10 +26,10 @@
     "compare-versions": "^3.6.0",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
-    "dbgate-query-splitter": "^4.9.3",
+    "dbgate-datalib": "^5.0.0-alpha.1",
+    "dbgate-query-splitter": "^4.10.1",
     "dbgate-sqltree": "^5.0.0-alpha.1",
     "dbgate-tools": "^5.0.0-alpha.1",
-    "dbgate-datalib": "^5.0.0-alpha.1",
     "debug": "^4.3.4",
     "diff": "^5.0.0",
     "diff2html": "^3.4.13",
@@ -52,16 +52,15 @@
     "ncp": "^2.0.0",
     "node-cron": "^2.0.3",
     "on-finished": "^2.4.1",
-    "pinomin": "^1.0.1",
+    "pinomin": "^1.0.4",
     "portfinder": "^1.0.28",
     "rimraf": "^3.0.0",
     "simple-encryptor": "^4.0.0",
     "ssh2": "^1.11.0",
-    "tar": "^6.0.5",
-    "uuid": "^3.4.0"
+    "tar": "^6.0.5"
   },
   "scripts": {
-    "start": "env-cmd node src/index.js --listen-api",
+    "start": "env-cmd -f .env node src/index.js --listen-api",
     "start:portal": "env-cmd -f env/portal/.env node src/index.js --listen-api",
     "start:bci": "env-cmd -f env/bci/.env node src/index.js --listen-api",
     "start:singledb": "env-cmd -f env/singledb/.env node src/index.js --listen-api",
@@ -85,7 +84,6 @@
   },
   "optionalDependencies": {
     "better-sqlite3": "9.6.0",
-    "msnodesqlv8": "^4.2.1",
-    "oracledb": "^5.5.0"
+    "msnodesqlv8": "^4.2.1"
   }
 }

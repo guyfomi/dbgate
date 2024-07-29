@@ -8,7 +8,29 @@ Builds:
  - linux - application for linux
  - win - application for Windows
 
-### Not released (5.2.8)
+### 5.3.1
+- FIXED: Column sorting on query tab not working #819
+- FIXED: Postgres Connection stays in "Loading database structure" until reloading the page #826
+- FIXED: Cannot read properties of undefined (reading 'length') on Tables #824
+- FIXED: Redshift doesn't show tables when connected #816
+
+### 5.3.0
+- CHANGED: New Oracle driver, much better Oracle support. Works now also in docker distribution
+- FIXED: Connection to oracle with service name #809
+- ADDED: Connect to redis using a custom username #807
+- FIXED: Unable to open SQL files #797
+- FIXED: MongoDB query without columns #811
+- ADDED: Switch connection for opened file #814
+
+### 5.2.9
+- FIXED: PostgresSQL doesn't show tables when connected #793 #805
+- FIXED: MongoDB write operations fail #798 #802
+- FIXED: Elecrron app logging losed most of log messages
+- FIXED: Connection error with SSH tunnel 
+- ADDED: option to disable autoupgrades (with --disable-auto-upgrade)
+- ADDED: Send error context to github gist
+
+### 5.2.8
 - FIXED: file menu save and save as not working
 - FIXED: query editor on import/export screen overlaps with selector
 - FIXED: Fixed inconsistencies in max/unmaximize window buttons
@@ -25,6 +47,10 @@ Builds:
 - ADDED: Add copy name to table list
 - FIXED: Make TabControl scrollable (#730)
 - ADDED: Add copy to column list
+- FIXED: Problems with SQLite + glibc in docker containers
+- ADDED: Button for discard/reset changes (#759)
+- FIXED: Don't show error dialog when subprocess fails, as DbGate handles this correctly (#751, #746, #542, #272)
+
 
 ### 5.2.7
 - FIXED: fix body overflow when context menu height great than viewport #592

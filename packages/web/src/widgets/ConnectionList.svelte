@@ -32,6 +32,7 @@
 
   const connections = useConnectionList();
   const serverStatus = useServerStatus();
+
   let filter = '';
 
   $: connectionsWithStatus =

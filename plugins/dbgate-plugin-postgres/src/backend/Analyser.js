@@ -55,8 +55,8 @@ class Analyser extends DatabaseAnalyser {
     super(pool, driver, version);
   }
 
-  createQuery(resFileName, typeFields) {
-    const query = super.createQuery(sql[resFileName], typeFields);
+  createQuery(resFileName, typeFields, replacements = {}) {
+    const query = super.createQuery(sql[resFileName], typeFields, replacements);
     return query;
   }
 
@@ -70,8 +70,10 @@ class Analyser extends DatabaseAnalyser {
     const tables = await this.analyserQuery(this.driver.dialect.stringAgg ? 'tableModifications' : 'tableList', [
       'tables',
     ]);
+
     this.feedback({ analysingMessage: 'Loading columns' });
     const columns = await this.analyserQuery('columns', ['tables', 'views']);
+
     this.feedback({ analysingMessage: 'Loading primary keys' });
     const pkColumns = await this.analyserQuery('primaryKeys', ['tables']);
 
@@ -82,6 +84,7 @@ class Analyser extends DatabaseAnalyser {
 
     this.feedback({ analysingMessage: 'Loading foreign key refs' });
     const fk_referentialConstraints = await this.analyserQuery('fk_referentialConstraints', ['tables']);
+
     this.feedback({ analysingMessage: 'Loading foreign key columns' });
     const fk_keyColumnUsage = await this.analyserQuery('fk_keyColumnUsage', ['tables']);
 
@@ -125,22 +128,31 @@ class Analyser extends DatabaseAnalyser {
 
     this.feedback({ analysingMessage: 'Loading views' });
     const views = await this.analyserQuery('views', ['views']);
+
     this.feedback({ analysingMessage: 'Loading materialized views' });
     const matviews = this.driver.dialect.materializedViews ? await this.analyserQuery('matviews', ['matviews']) : null;
+
     this.feedback({ analysingMessage: 'Loading materialized view columns' });
     const matviewColumns = this.driver.dialect.materializedViews
       ? await this.analyserQuery('matviewColumns', ['matviews'])
       : null;
+
     this.feedback({ analysingMessage: 'Loading routines' });
-    const routines = await this.analyserQuery('routines', ['procedures', 'functions']);
+    const routines = await this.analyserQuery('routines', ['procedures', 'functions'], {
+      $typeAggFunc: this.driver.dialect.stringAgg ? 'string_agg' : 'max',
+      $typeAggParam: this.driver.dialect.stringAgg ? ", '|'" : '',
+    });
+
     this.feedback({ analysingMessage: 'Loading indexes' });
     const indexes = this.driver.__analyserInternals.skipIndexes
       ? { rows: [] }
       : await this.analyserQuery('indexes', ['tables']);
+
     this.feedback({ analysingMessage: 'Loading index columns' });
     const indexcols = this.driver.__analyserInternals.skipIndexes
       ? { rows: [] }
       : await this.analyserQuery('indexcols', ['tables']);
+
     this.feedback({ analysingMessage: 'Loading unique names' });
     const uniqueNames = await this.analyserQuery('uniqueNames', ['tables']);
 
@@ -149,6 +161,7 @@ class Analyser extends DatabaseAnalyser {
       this.feedback({ analysingMessage: 'Loading geometry columns' });
       geometryColumns = await this.analyserQuery('geometryColumns', ['tables']);
     }
+
     let geographyColumns = { rows: [] };
     if (views.rows.find(x => x.pure_name == 'geography_columns' && x.schema_name == 'public')) {
       this.feedback({ analysingMessage: 'Loading geography columns' });
@@ -280,6 +293,22 @@ class Analyser extends DatabaseAnalyser {
     };
 
     this.feedback({ analysingMessage: null });
+
+    this.logger.debug(
+      {
+        tables: res.tables?.length,
+        columns: _.sum(res.tables?.map(x => x.columns?.length)),
+        primaryKeys: res.tables?.filter(x => x.primaryKey)?.length,
+        foreignKeys: _.sum(res.tables?.map(x => x.foreignKeys?.length)),
+        indexes: _.sum(res.tables?.map(x => x.indexes?.length)),
+        uniques: _.sum(res.tables?.map(x => x.uniques?.length)),
+        views: res.views?.length,
+        matviews: res.matviews?.length,
+        procedures: res.procedures?.length,
+        functions: res.functions?.length,
+      },
+      'Database structured finalized'
+    );
 
     return res;
   }
