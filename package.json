@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "concurrently": "^5.1.0",
+    "dbgate-tools": "^5.0.0-alpha.1",
     "patch-package": "^6.2.1",
     "pino-pretty": "^9.1.1"
   },

@@ -75,6 +75,7 @@
     "@types/fs-extra": "^9.0.11",
     "@types/lodash": "^4.14.149",
     "dbgate-types": "^5.0.0-alpha.1",
+    "dbgate-tools": "^5.0.0-alpha.1",
     "env-cmd": "^10.1.0",
     "node-loader": "^1.0.2",
     "nodemon": "^2.0.2",
